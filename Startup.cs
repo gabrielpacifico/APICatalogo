@@ -40,6 +40,12 @@ namespace APICatalogo
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("PermitirApiRequest",
+                    builder => builder.WithOrigins("https://apirequest.io").WithMethods("GET"));
+            });
+
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new MappingProfile());
@@ -105,6 +111,8 @@ namespace APICatalogo
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
