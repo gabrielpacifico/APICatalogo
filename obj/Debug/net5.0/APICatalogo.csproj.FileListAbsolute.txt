@@ -39,3 +39,15 @@ C:\Users\drive\source\repos\APICatalogo\APICatalogo\obj\Debug\net5.0\staticwebas
 C:\Users\drive\source\repos\APICatalogo\APICatalogo\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\drive\source\repos\APICatalogo\APICatalogo\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\drive\source\repos\APICatalogo\APICatalogo\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\drive\source\repos\APICatalogo\APICatalogo\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\drive\source\repos\APICatalogo\APICatalogo\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\drive\source\repos\APICatalogo\APICatalogo\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\drive\source\repos\APICatalogo\APICatalogo\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\drive\source\repos\APICatalogo\APICatalogo\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\drive\source\repos\APICatalogo\APICatalogo\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\drive\source\repos\APICatalogo\APICatalogo\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\drive\source\repos\APICatalogo\APICatalogo\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\drive\source\repos\APICatalogo\APICatalogo\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\drive\source\repos\APICatalogo\APICatalogo\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\drive\source\repos\APICatalogo\APICatalogo\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\drive\source\repos\APICatalogo\APICatalogo\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
