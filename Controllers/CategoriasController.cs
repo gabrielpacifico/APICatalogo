@@ -5,6 +5,7 @@ using APICatalogo.Pagination;
 using APICatalogo.Repository;
 using APICatalogo.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
@@ -21,39 +22,26 @@ using System.Threading.Tasks;
 
 namespace APICatalogo.Controllers
 {
-    [Authorize(AuthenticationSchemes = "Bearer")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("[Controller]")]
     [ApiController]
-    [EnableCors("PermitirApiRequest")]
     public class CategoriasController : ControllerBase
     {
         private readonly IUnitOfWork _uof;
-        private readonly IConfiguration _configuration;
-        private readonly ILogger _logger;
         private readonly IMapper _mapper;
 
-        public CategoriasController(IUnitOfWork contexto, IConfiguration config, ILogger<CategoriasController> logger, IMapper mapper)
+        public CategoriasController(IUnitOfWork contexto, IMapper mapper)
         {
             _uof = contexto;
-            _configuration = config;
-            _logger = logger;
             _mapper = mapper;
         }
 
-        //[HttpGet("autor")]
-        //public string GetAutor()
-        //{
-        //    var autor = _configuration["autor"];
-        //    var conexao = _configuration["ConnectionStrings:DefaultConnection"];
-        //    return $"Autor: {autor}, Conexão: {conexao}";
-        //}
-
-        //[HttpGet("saudacao/{nome}")]
-        //public ActionResult<string> GetSaudacao([FromServices] IMeuServico meuServico, string nome)
-        //{
-        //    return meuServico.Saudacao(nome);
-        //}
-
+        [AllowAnonymous]
+        [HttpGet("teste")]
+        public string GetTeste()
+        {
+            return $"Categorias Controller - {DateTime.Now.ToLongDateString()}";
+        }
         [HttpGet]
         public async Task<ActionResult<CategoriaDTO>> Get([FromQuery] CategoriasParameters categoriasParameters)
         {

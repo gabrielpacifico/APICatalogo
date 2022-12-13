@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -42,8 +43,10 @@ namespace APICatalogo
 
             services.AddCors(options =>
             {
-                options.AddPolicy("PermitirApiRequest",
-                    builder => builder.WithOrigins("https://apirequest.io").WithMethods("GET"));
+                options.AddPolicy("EnableCORS", builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().Build();
+                });
             });
 
             var mappingConfig = new MapperConfiguration(mc =>
@@ -55,6 +58,7 @@ namespace APICatalogo
             services.AddSingleton(mapper);
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             string ConnectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<AppDbContext>(opt => opt.UseMySql(ConnectionString, ServerVersion.AutoDetect(ConnectionString)));
 
@@ -77,6 +81,14 @@ namespace APICatalogo
                     IssuerSigningKey = new SymmetricSecurityKey(
                         Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
                 });
+
+            services.AddApiVersioning(options =>
+            {
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.DefaultApiVersion = new ApiVersion(1, 0);
+                options.ReportApiVersions = true;
+                options.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
+            });
 
             services.AddTransient<IMeuServico, MeuServico>();
 
@@ -112,7 +124,7 @@ namespace APICatalogo
 
             app.UseAuthorization();
 
-            app.UseCors();
+            app.UseCors("EnableCORS");
 
             app.UseEndpoints(endpoints =>
             {
